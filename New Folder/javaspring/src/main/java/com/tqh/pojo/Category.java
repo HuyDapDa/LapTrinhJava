@@ -50,7 +50,7 @@ public class Category implements Serializable {
     @Size(max = 255)
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoryId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category_id")
     private Set<Product> productSet;
 
     public Category() {

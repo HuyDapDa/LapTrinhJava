@@ -4,6 +4,7 @@
  */
 package com.tqh.configs;
 
+import java.text.SimpleDateFormat;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +22,11 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com.tqh.controllers")
+@ComponentScan(basePackages = 
+        {"com.tqh.controllers",
+    "com.tqh.repository",
+    "com.tqh.service"}
+)
 
 public class WebApplicationContextConfig implements WebMvcConfigurer{
     @Override
@@ -37,5 +42,9 @@ public class WebApplicationContextConfig implements WebMvcConfigurer{
         resolver.setPrefix("/WEB-INF/pages/");
         resolver.setSuffix(".jsp");
         return resolver;
+    }
+        @Bean
+    public SimpleDateFormat simpleDateFormat() {
+        return new SimpleDateFormat("yyyy-MM-dd");
     }
 }
